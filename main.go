@@ -12,4 +12,10 @@ func helloHandler(w http.ResponseWriter, r *http.Request) {
 func main() {
     http.HandleFunc("/", helloHandler)
     http.ListenAndServe(":8080", nil)
+    http.HandleFunc("/health", healthHandler)
 }
+
+func healthHandler(w http.ResponseWriter, r *http.Request) {
+    fmt.Fprint(w, "OK")
+}
+
